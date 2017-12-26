@@ -15,8 +15,6 @@ public class HbaseReducer extends Reducer<Text, IntWritable, Text, IntWritable>{
 		context.write(key, altMax);
 	}
 
-
-
 	private int calculAltMax(Iterable<IntWritable> iterable) {
 		int result = -1;
 		for (IntWritable alt : iterable) {
