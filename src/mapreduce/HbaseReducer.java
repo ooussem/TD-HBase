@@ -13,15 +13,14 @@ public class HbaseReducer extends Reducer<Text, IntWritable, Text, IntWritable>{
 			throws IOException, InterruptedException {
 		IntWritable altMax = new IntWritable(calculAltMax(values));
 		context.write(key, altMax);
-		
 	}
-	
+
+
+
 	private int calculAltMax(Iterable<IntWritable> iterable) {
 		int result = -1;
-		int altPrevious = -1; 
 		for (IntWritable alt : iterable) {
-			if(alt.get() > altPrevious) result = alt.get();
-			altPrevious = alt.get();
+			if(alt.get() > result) result = alt.get();
 		}
 		
 		return result;
